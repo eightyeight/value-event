@@ -32,11 +32,7 @@ function BaseEvent(lambda) {
     function handleEvent(ev) {
         var self = this
 
-        if (self.opts.startPropagation && ev.startPropagation) {
-            ev.startPropagation()
-        }
-
-        lambda.call(self, ev, broadcast)
+        handleLambda.call(self, ev, broadcast)
 
         function broadcast(value) {
             if (typeof self.fn === 'function') {
